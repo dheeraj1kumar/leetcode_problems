@@ -1,3 +1,5 @@
+//linera
+
 class Solution {
     public int search(int[] n, int target) {
         for(int i=0;i<n.length;i++){

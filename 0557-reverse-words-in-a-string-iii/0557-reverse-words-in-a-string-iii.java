@@ -11,5 +11,3 @@ class Solution {
         return str.trim();//remove extra space trim() method
     }
 }
-
-

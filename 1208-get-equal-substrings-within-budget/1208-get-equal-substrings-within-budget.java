@@ -1,20 +1,23 @@
 class Solution {
     public int equalSubstring(String s, String t, int maxCost) {
-       int head=0,tail=0,maxc=0,len=0;
+        int n = s.length();
         
-        for(head=0;head<s.length();head++){
+        int maxLen = 0;
+        int currCost = 0;
+        
+        int i = 0, j = 0;
+        while (j < n) {
+            currCost += Math.abs(s.charAt(j) - t.charAt(j));
             
+            while (currCost > maxCost) {
+                currCost -= Math.abs(s.charAt(i) - t.charAt(i));
+                i++;
+            }
             
-            maxc+=Math.abs(s.charAt(head)-t.charAt(head));//perform operation
-                
-                while(maxc>maxCost){//if condition fails loop here to make it valid 
-                     maxc-=Math.abs(s.charAt(tail)-t.charAt(tail));
-                         
-                         tail++;//update tail
-                }
-            len=Math.max(len,head-tail+1);//update ans that have to return
+            maxLen = Math.max(maxLen, j - i + 1);
+            j++;
         }
         
-        return len;
+        return maxLen;
     }
 }
